@@ -37,3 +37,13 @@ The command I used was:
 docker run -i ubuntu sh -c 'apt-get update; apt-get install curl --assume-yes; echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
 ```
 So I added `-i` to wait for user input for the website and commands `apt-get update; apt-get install curl --assume-yes;` to the commands given in shell inside the container to install curl. Flag `--assume-yes` makes the installation not to wait for confirmation.
+
+## 1.6
+The Dockerfile can be found [here](1.6/Dockerfile). It's contents are:
+```
+FROM devopsdockeruh/overwrite_cmd_exercise
+
+CMD ["--clock"]
+```
+The command used to build the image with the desired tag was `docker build -t docker-clock .`
+The container can now be run with command `docker run docker-clock`.
