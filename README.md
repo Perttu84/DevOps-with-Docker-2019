@@ -23,4 +23,16 @@ docker run -d devopsdockeruh/exec_bash_exercise
 553c2d3ce22b091dacb866706794a351452493307cad9c2e350f2c47138aa54f
 docker exec -it 55 bash
 tail -f ./logs.txt
+Sat, 11 Jan 2020 21:53:51 GMT
+Sat, 11 Jan 2020 21:53:54 GMT
+Sat, 11 Jan 2020 21:53:57 GMT
+Sat, 11 Jan 2020 21:54:00 GMT
+Secret message is:
+"Docker is easy"
+```
+
+## 1.5
+The command I used was:
+```
+docker run -i ubuntu sh -c 'apt-get update; apt-get install curl --assume-yes; echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
 ```
