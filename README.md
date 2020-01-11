@@ -36,3 +36,4 @@ The command I used was:
 ```
 docker run -i ubuntu sh -c 'apt-get update; apt-get install curl --assume-yes; echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
 ```
+So I added `-i` to wait for user input for the website and commands `apt-get update; apt-get install curl --assume-yes;` to the commands given in shell inside the container to install curl. Flag `--assume-yes` makes the installation not to wait for confirmation.
