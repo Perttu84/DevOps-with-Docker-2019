@@ -47,3 +47,24 @@ CMD ["--clock"]
 ```
 The command used to build the image with the desired tag was `docker build -t docker-clock .`
 The container can now be run with command `docker run docker-clock`.
+
+## 1.7
+The Dockerfile can ve found [here](1.7/Dockerfile) and the script file [here](1.7/script.sh)
+The contents of the Dockerfile are:
+```
+FROM ubuntu
+
+RUN apt-get update && apt-get install -y curl
+COPY script.sh .
+RUN chmod a+x script.sh
+CMD ./script.sh
+```
+and the contents of script.sh are:
+```
+echo "Input website:";
+read website;
+echo "Searching..";
+sleep 1;
+curl http://$website;
+```
+The image is built with command `docker build -t curler .` and the containter is run with command `docker run -it curler`.
