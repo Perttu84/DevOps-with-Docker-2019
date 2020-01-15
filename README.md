@@ -74,3 +74,9 @@ The command I used in this exercise was
 ´´´
 docker run -v $(pwd)/logs.txt:/usr/app/logs.txt devopsdockeruh/first_volume_exercise
 ´´´
+
+## 1.9
+The command I used in this exercise was
+´´´
+docker run -p 8000:80 devopsdockeruh/ports_exercise
+´´´
