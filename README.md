@@ -68,3 +68,9 @@ sleep 1;
 curl http://$website;
 ```
 The image is built with command `docker build -t curler .` and the containter is run with command `docker run -it curler`.
+
+## 1.8
+The command I used in this exercise was
+´´´
+docker run -v $(pwd)/logs.txt:/usr/app/logs.txt devopsdockeruh/first_volume_exercise
+´´´
