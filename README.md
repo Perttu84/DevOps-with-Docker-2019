@@ -49,7 +49,7 @@ The command used to build the image with the desired tag was `docker build -t do
 The container can now be run with command `docker run docker-clock`.
 
 ## 1.7
-The Dockerfile can ve found [here](1.7/Dockerfile) and the script file [here](1.7/script.sh)
+The Dockerfile can be found [here](1.7/Dockerfile) and the script file [here](1.7/script.sh)
 The contents of the Dockerfile are:
 ```
 FROM ubuntu
@@ -71,12 +71,28 @@ The image is built with command `docker build -t curler .` and the containter is
 
 ## 1.8
 The command I used in this exercise was
-´´´
+```
 docker run -v $(pwd)/logs.txt:/usr/app/logs.txt devopsdockeruh/first_volume_exercise
-´´´
+```
 
 ## 1.9
 The command I used in this exercise was
-´´´
-docker run -p 8000:80 devopsdockeruh/ports_exercise
-´´´
+```
+docker run -p 80:80 devopsdockeruh/ports_exercise
+```
+
+## 1.10
+The Dockerfile can be found [here](1.10/Dockerfile) and its contents are:
+```
+FROM ubuntu
+
+RUN apt-get update && apt-get install -y curl
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+RUN apt-get install -y nodejs
+RUN apt-get install git -y
+RUN git clone https://github.com/docker-hy/frontend-example-docker.git
+WORKDIR /frontend-example-docker
+RUN npm install
+EXPOSE 5000
+CMD npm start
+```
