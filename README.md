@@ -96,3 +96,21 @@ RUN npm install
 EXPOSE 5000
 CMD npm start
 ```
+The container can then be run with command `docker run -p 5000:5000 [container name/id]`.
+
+## 1.11
+The Dockerfile can be found [here](1.11/Dockerfile) and its contents are:
+```
+FROM ubuntu
+
+RUN apt-get update && apt-get install -y curl
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+RUN apt-get install -y nodejs
+RUN apt-get install git -y
+RUN git clone https://github.com/docker-hy/backend-example-docker
+WORKDIR /backend-example-docker
+RUN npm install
+EXPOSE 8000
+CMD npm start
+```
+And the correct command to start the container is: `backend-example-docker perttu$ docker run -p 8000:8000 -v $(pwd)/logs.txt://backend-example-docker/logs.txt [container id/name]`.
