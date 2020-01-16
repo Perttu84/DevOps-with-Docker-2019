@@ -114,3 +114,38 @@ EXPOSE 8000
 CMD npm start
 ```
 And the correct command to start the container is: `backend-example-docker perttu$ docker run -p 8000:8000 -v $(pwd)/logs.txt://backend-example-docker/logs.txt [container id/name]`.
+
+## 1.12
+The altered Dockerfile for backend can be found [here](1.12/backend/Dockerfile) and for frontend [here](1.12/frontend/Dockerfile).
+
+The content for the backend Dockerfile is:
+```
+FROM ubuntu
+
+RUN apt-get update && apt-get install -y curl
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+RUN apt-get install -y nodejs
+RUN apt-get install git -y
+RUN git clone https://github.com/docker-hy/backend-example-docker
+ENV FRONT_URL=http://localhost:5000
+WORKDIR /backend-example-docker
+RUN npm install
+EXPOSE 8000
+CMD npm start
+```
+and for the frontend Dockerfile:
+```
+FROM ubuntu
+
+RUN apt-get update && apt-get install -y curl
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+RUN apt-get install -y nodejs
+RUN apt-get install git -y
+RUN git clone https://github.com/docker-hy/frontend-example-docker.git
+ENV API_URL=http://localhost:8000
+WORKDIR /frontend-example-docker
+RUN npm install
+EXPOSE 5000
+CMD npm start
+```
+The commands to start the containers are the same as in previous exercises.
